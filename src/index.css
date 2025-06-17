@@ -68,11 +68,13 @@
   --color-canva-lightgreen: #9fb448;
   --color-canva-#7C7474: #112e4f;
 
-  --color-cgreen: #6c9a3d;
-  --color-cwhite: #f4f3eb;
   --color-cblue: #0b304d;
+
+  --color-cwhite: #f4f3eb;
   --color-cwhite2: #f8f4ec;
-  --color-cgreen2: #80ac44;
-  --color-cwhite3: #efefef;
-  --color-cgreenLight: #8db950;
+  --color-cdarkWhite: #efefef;
+
+  --color-cgreen: #6c9a3d;
+  --color-cgreen2: #90b26f;
+  --color-cgreenLight: #b0c998;
 }
