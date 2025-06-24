@@ -58,19 +58,19 @@ function Navbar() {
 
   return (
     <header className="w-full flex justify-center items-center z-20">
-      <nav className="bg-cgreen2 overflow-visible border-gray-200 px-2 sm:px-4 py-1.5 dark:bg-cwhite2 m-5 rounded min-w-[100vh] h-[75px] flex justify-between items-center shadow-xl">
-        <Link className="font-medium text-xl text-white m-4" to="/">
+      <nav className="bg-cgreen2 overflow-visible border-gray-200 px-2 sm:px-4 py-1.5 dark:bg-cwhite2 m-5 rounded min-w-[100vh] h-[55px] flex justify-between items-center shadow-xl">
+        <Link className="font-medium text-lg text-white m-4" to="/">
           Accueil
         </Link>
         <NavButton title="Informations" data={data} />
         <NavButton title="Le village" data={btnVillage} />
         <img className="h-full" src={logo} alt="Logo du village" />
 
-        <Link className="font-medium text-xl text-white m-4" to="/admin">
+        <Link className="font-medium text-lg text-white m-4" to="/admin">
           Associations
         </Link>
         <NavButton title="Jeunesse" data={btnJeunesse} />
-        <Link className="font-medium text-xl text-white m-4" to="/admin">
+        <Link className="font-medium text-lg text-white m-4" to="/admin">
           Salle polyvalente
         </Link>
       </nav>

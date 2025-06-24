@@ -13,18 +13,16 @@ type DropdownProps = {
 
 export function NavButton({ title, data }: { title: string; data: NavButtonPropsData[] }) {
   return (
-    <div className="flex space-x-4">
-      <div className="group relative w-40 max-h-12 hover:cursor-pointer overflow-visible transition-all duration-300 bg-cgreen2 rounded">
-        <h2 className="text-xl font-medium text-center py-3 text-white">{title}</h2>
+    <div className="text-center group relative w-40 hover:cursor-pointer overflow-visible transition-all duration-300 m-4">
+      <h2 className="font-medium text-lg text-white">{title}</h2>
 
-        <div className="absolute left-0 top-full w-full bg-cgreen2 rounded-b shadow-md overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100 z-50">
-          <div className="flex flex-col items-center p-2">
-            {data.map((sub, subIndex) => (
-              <a key={subIndex} href={sub.to} className=" text-white px-4 py-2 m-2 rounded hover:bg-cgreen3 transition-colors hover:bg-cgreenLight text-center w-35">
-                {sub.title}
-              </a>
-            ))}
-          </div>
+      <div className="absolute left-0 top-full w-full bg-cgreen2 rounded-b shadow-md overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100 z-50">
+        <div className="flex flex-col items-center p-2">
+          {data.map((sub, subIndex) => (
+            <a key={subIndex} href={sub.to} className="text-white px-4 py-2 m-2 rounded hover:bg-cgreen3 transition-colors hover:bg-cgreenLight text-center w-35">
+              {sub.title}
+            </a>
+          ))}
         </div>
       </div>
     </div>
