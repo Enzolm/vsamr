@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Un bouton principal avec plusieurs sous-boutons
 type NavButtonPropsData = {
@@ -13,13 +13,13 @@ type DropdownProps = {
 
 export function NavButton({ title, data }: { title: string; data: NavButtonPropsData[] }) {
   return (
-    <div className="text-center group relative w-40 hover:cursor-pointer overflow-visible transition-all duration-300 m-4">
-      <h2 className="font-medium text-lg text-white">{title}</h2>
+    <div className="text-center group relative hover:cursor-pointer overflow-visible transition-all duration-300">
+      <h2 className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10">{title}</h2>
 
-      <div className="absolute left-0 top-full w-full bg-cgreen2 rounded-b shadow-md overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100 z-50">
-        <div className="flex flex-col items-center p-2">
+      <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-64 bg-cgreen2 rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100 z-50 pt-1">
+        <div className="flex flex-col p-2">
           {data.map((sub, subIndex) => (
-            <a key={subIndex} href={sub.to} className="text-white px-4 py-2 m-2 rounded hover:bg-cgreen3 transition-colors hover:bg-cgreenLight text-center w-35">
+            <a key={subIndex} href={sub.to} className="text-white px-4 py-3 my-1 rounded-lg hover:bg-white/10 transition-colors text-center text-sm font-medium">
               {sub.title}
             </a>
           ))}

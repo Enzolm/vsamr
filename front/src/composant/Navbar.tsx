@@ -1,8 +1,12 @@
 import logo from "@/assets/logoclear.png";
 import { Link } from "react-router";
 import { NavButton } from "@/composant/ui/NavButton";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const data = [
     {
       title: "Horaires",
@@ -57,22 +61,101 @@ function Navbar() {
   ];
 
   return (
-    <header className="w-full flex justify-center items-center z-20">
-      <nav className="bg-cgreen2 overflow-visible border-gray-200 px-2 sm:px-4 py-1.5 dark:bg-cwhite2 m-5 rounded min-w-[100vh] h-[55px] flex justify-between items-center shadow-xl">
-        <Link className="font-medium text-lg text-white m-4" to="/">
-          Accueil
-        </Link>
-        <NavButton title="Informations" data={data} />
-        <NavButton title="Le village" data={btnVillage} />
-        <img className="h-full" src={logo} alt="Logo du village" />
+    <header className="w-full flex justify-center items-center z-20 relative">
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:flex bg-cgreen2 overflow-visible border-gray-200 px-6 py-3 m-5 rounded-2xl min-w-[90vw] max-w-[1200px] h-[70px] justify-between items-center shadow-xl">
+        {/* Left side navigation */}
+        <div className="flex items-center space-x-8">
+          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/">
+            Accueil
+          </Link>
+          <NavButton title="Informations" data={data} />
+          <NavButton title="Le village" data={btnVillage} />
+        </div>
 
-        <Link className="font-medium text-lg text-white m-4" to="/admin">
-          Associations
-        </Link>
-        <NavButton title="Jeunesse" data={btnJeunesse} />
-        <Link className="font-medium text-lg text-white m-4" to="/admin">
-          Salle polyvalente
-        </Link>
+        {/* Center logo */}
+        <div className="flex-shrink-0 mx-12">
+          <img className="h-12 w-auto" src={logo} alt="Logo du village" />
+        </div>
+
+        {/* Right side navigation */}
+        <div className="flex items-center space-x-8">
+          <NavButton title="Jeunesse" data={btnJeunesse} />
+          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/admin">
+            Associations
+          </Link>
+          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/admin">
+            Salle polyvalente
+          </Link>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <nav className="lg:hidden bg-cgreen2 w-full mx-5 my-5 rounded-lg shadow-xl">
+        <div className="px-4 py-3">
+          <div className="flex justify-between items-center">
+            {/* Mobile logo */}
+            <img className="h-10 w-auto" src={logo} alt="Logo du village" />
+
+            {/* Mobile menu button */}
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="Toggle menu">
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+
+          {/* Mobile menu items */}
+          <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"}`}>
+            <div className="space-y-2 pb-4">
+              <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/" onClick={() => setIsMenuOpen(false)}>
+                Accueil
+              </Link>
+
+              {/* Mobile dropdown sections */}
+              <div className="space-y-2">
+                <div className="px-4 py-2">
+                  <h3 className="font-medium text-lg text-white mb-2">Informations</h3>
+                  <div className="pl-4 space-y-1">
+                    {data.map((item, index) => (
+                      <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-1" to={item.to} onClick={() => setIsMenuOpen(false)}>
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="px-4 py-2">
+                  <h3 className="font-medium text-lg text-white mb-2">Le village</h3>
+                  <div className="pl-4 space-y-1">
+                    {btnVillage.map((item, index) => (
+                      <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-1" to={item.to} onClick={() => setIsMenuOpen(false)}>
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="px-4 py-2">
+                  <h3 className="font-medium text-lg text-white mb-2">Jeunesse</h3>
+                  <div className="pl-4 space-y-1">
+                    {btnJeunesse.map((item, index) => (
+                      <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-1" to={item.to} onClick={() => setIsMenuOpen(false)}>
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/admin" onClick={() => setIsMenuOpen(false)}>
+                Associations
+              </Link>
+
+              <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/admin" onClick={() => setIsMenuOpen(false)}>
+                Salle polyvalente
+              </Link>
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
   );
