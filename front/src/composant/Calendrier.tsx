@@ -273,8 +273,8 @@ export default function CalendarExample() {
       <Calendar events={sampleEvents} onDateSelect={handleDateSelect} selectedDate={selectedDate} defaultMonth={new Date(2025, 5)} />
 
       <div className="mt-4 text-center text-sm text-gray-600 space-y-1">
-        <p>• Le jour actuel est surligné en bleu</p>
-        <p>• Les barres colorées indiquent des événements</p>
+        {/* <p>• Le jour actuel est surligné en bleu</p>
+        <p>• Les barres colorées indiquent des événements</p> */}
         <p>• Cliquez sur une date pour voir les détails</p>
       </div>
 
@@ -314,9 +314,6 @@ export default function CalendarExample() {
                 <div className="text-center py-8">
                   <div className="text-gray-400 text-4xl mb-3 animate-bounce">📅</div>
                   <p className="text-gray-500 mb-4">Aucun événement prévu ce jour</p>
-                  <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl active:scale-95" onClick={() => console.log("Ajouter un événement pour", selectedDate)}>
-                    + Ajouter un événement
-                  </button>
                 </div>
               )}
             </div>

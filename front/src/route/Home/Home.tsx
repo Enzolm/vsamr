@@ -32,8 +32,8 @@ function Home() {
 
           {/* Section calendrier - largeur fixe sur desktop, pleine largeur sur mobile */}
           <div className="w-full lg:w-[450px] h-full lg:flex-shrink-0">
-            <iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&height=350&wkst=2&bgcolor=%23006600&src=mck7v0kjmq5dhljp2oe3g4ghrc%40group.calendar.google.com&color=%23A32929&src=p%23weather%40group.v.calendar.google.com&color=%231B887A&ctz=Europe%2FParis" className="rounded-lg"></iframe>
-            {/* <CalendarExample /> */}
+            {/* <iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&height=350&wkst=2&bgcolor=%23006600&src=mck7v0kjmq5dhljp2oe3g4ghrc%40group.calendar.google.com&color=%23A32929&src=p%23weather%40group.v.calendar.google.com&color=%231B887A&ctz=Europe%2FParis" className="rounded-lg"></iframe> */}
+            <CalendarExample />
           </div>
         </div>
         <div className="mb-8">
