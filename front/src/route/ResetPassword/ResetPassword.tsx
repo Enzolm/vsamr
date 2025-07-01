@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useSearchParams, useNavigate } from "react-router";
 import { Lock, Eye, EyeOff, CheckCircle, AlertCircle, ArrowLeft } from "lucide-react";
 import logo from "@/assets/logoclear.png";
+import { config } from "@/config/config";
 
 function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -56,7 +57,7 @@ function ResetPassword() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3001/utilisateur/reset-password", {
+      const response = await fetch(`${config.api.baseUrl}/utilisateur/reset-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

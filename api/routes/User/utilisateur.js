@@ -6,6 +6,8 @@ router.get("/get/all/users", UsersController.getUsers);
 
 router.get("/get/user/:id", UsersController.getUserById);
 
+router.get("/verify-token", UsersController.verifyToken);
+
 router.post("/create/user", UsersController.createUser);
 
 router.post("/login/user", UsersController.loginUser);

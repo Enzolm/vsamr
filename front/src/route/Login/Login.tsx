@@ -7,6 +7,8 @@ import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import logo from "@/assets/logoclear.png";
 import axios from "axios";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
+import { config } from "@/config/config";
 
 // Schémas de validation Zod
 const loginSchema = z.object({
@@ -32,6 +34,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 function Login() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -63,7 +66,7 @@ function Login() {
     // Cette fonction ne sera appelée que si la validation passe
     console.log("Login attempt:", data);
     try {
-      const response = await axios.post("http://localhost:3001/utilisateur/login/user", data);
+      const response = await axios.post(`${config.api.baseUrl}/utilisateur/login/user`, data);
       console.log("Login successful:", response.data);
 
       // Stocker le token et les infos utilisateur dans localStorage
@@ -72,6 +75,7 @@ function Login() {
       localStorage.setItem("user", JSON.stringify(user));
 
       toast.success("Connexion réussie.");
+      navigate("/logged");
 
       // Optionnel: rediriger vers la page d'accueil
       // window.location.href = "/";
@@ -95,7 +99,7 @@ function Login() {
     // Cette fonction ne sera appelée que si la validation passe
     console.log("Register :", data);
     try {
-      const response = await axios.post("http://localhost:3001/utilisateur/create/user", data);
+      const response = await axios.post(`${config.api.baseUrl}/utilisateur/create/user`, data);
       console.log("Registration successful:", response.data);
 
       // Stocker le token et les infos utilisateur dans localStorage (auto-login après inscription)
@@ -106,7 +110,7 @@ function Login() {
       }
 
       toast.success("Compte créé avec succès ! Vous êtes maintenant connecté.");
-
+      navigate("/logged");
       // Optionnel: rediriger vers la page d'accueil
       // window.location.href = "/";
     } catch (error) {

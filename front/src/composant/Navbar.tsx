@@ -2,10 +2,22 @@ import logo from "@/assets/logoclear.png";
 import { Link } from "react-router";
 import { NavButton } from "@/composant/ui/NavButton";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({
+    informations: false,
+    village: false,
+    jeunesse: false,
+  });
+
+  const toggleDropdown = (key: string) => {
+    setOpenDropdowns((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   const data = [
     {
@@ -81,10 +93,10 @@ function Navbar() {
         {/* Right side navigation */}
         <div className="flex items-center space-x-8">
           <NavButton title="Jeunesse" data={btnJeunesse} />
-          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/admin">
+          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/associations">
             Associations
           </Link>
-          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/admin">
+          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/salle-polyvalente">
             Salle polyvalente
           </Link>
         </div>
@@ -104,7 +116,7 @@ function Navbar() {
           </div>
 
           {/* Mobile menu items */}
-          <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"}`}>
+          <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? "max-h-[600px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}>
             <div className="space-y-2 pb-4">
               <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/" onClick={() => setIsMenuOpen(false)}>
                 Accueil
@@ -112,45 +124,63 @@ function Navbar() {
 
               {/* Mobile dropdown sections */}
               <div className="space-y-2">
+                {/* Dropdown Informations */}
                 <div className="px-4 py-2">
-                  <h3 className="font-medium text-lg text-white mb-2">Informations</h3>
-                  <div className="pl-4 space-y-1">
-                    {data.map((item, index) => (
-                      <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-1" to={item.to} onClick={() => setIsMenuOpen(false)}>
-                        {item.title}
-                      </Link>
-                    ))}
+                  <button onClick={() => toggleDropdown("informations")} className="w-full flex items-center justify-between font-medium text-lg text-white hover:text-gray-200 transition-colors py-2 rounded-lg hover:bg-white/10">
+                    <span>Informations</span>
+                    {openDropdowns.informations ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                  </button>
+                  <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openDropdowns.informations ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                    <div className="pl-4 space-y-1">
+                      {data.map((item, index) => (
+                        <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-2 px-2 rounded hover:bg-white/5" to={item.to} onClick={() => setIsMenuOpen(false)}>
+                          - {item.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
+                {/* Dropdown Village */}
                 <div className="px-4 py-2">
-                  <h3 className="font-medium text-lg text-white mb-2">Le village</h3>
-                  <div className="pl-4 space-y-1">
-                    {btnVillage.map((item, index) => (
-                      <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-1" to={item.to} onClick={() => setIsMenuOpen(false)}>
-                        {item.title}
-                      </Link>
-                    ))}
+                  <button onClick={() => toggleDropdown("village")} className="w-full flex items-center justify-between font-medium text-lg text-white hover:text-gray-200 transition-colors py-2 rounded-lg hover:bg-white/10">
+                    <span>Le village</span>
+                    {openDropdowns.village ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                  </button>
+                  <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openDropdowns.village ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                    <div className="pl-4 space-y-1">
+                      {btnVillage.map((item, index) => (
+                        <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-2 px-2 rounded hover:bg-white/5" to={item.to} onClick={() => setIsMenuOpen(false)}>
+                          - {item.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
+                {/* Dropdown Jeunesse */}
                 <div className="px-4 py-2">
-                  <h3 className="font-medium text-lg text-white mb-2">Jeunesse</h3>
-                  <div className="pl-4 space-y-1">
-                    {btnJeunesse.map((item, index) => (
-                      <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-1" to={item.to} onClick={() => setIsMenuOpen(false)}>
-                        {item.title}
-                      </Link>
-                    ))}
+                  <button onClick={() => toggleDropdown("jeunesse")} className="w-full flex items-center justify-between font-medium text-lg text-white hover:text-gray-200 transition-colors py-2 rounded-lg hover:bg-white/10">
+                    <span>Jeunesse</span>
+                    {openDropdowns.jeunesse ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                  </button>
+                  <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openDropdowns.jeunesse ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                    <div className="pl-4 space-y-1">
+                      {btnJeunesse.map((item, index) => (
+                        <Link key={index} className="block text-sm text-white/80 hover:text-white transition-colors py-2 px-2 rounded hover:bg-white/5" to={item.to} onClick={() => setIsMenuOpen(false)}>
+                          - {item.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/admin" onClick={() => setIsMenuOpen(false)}>
+              <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/associations" onClick={() => setIsMenuOpen(false)}>
                 Associations
               </Link>
 
-              <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/admin" onClick={() => setIsMenuOpen(false)}>
+              <Link className="block font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-3 rounded-lg hover:bg-white/10" to="/salle-polyvalente" onClick={() => setIsMenuOpen(false)}>
                 Salle polyvalente
               </Link>
             </div>

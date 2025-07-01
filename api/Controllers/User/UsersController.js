@@ -199,11 +199,40 @@ const resetPassword = async (req, res) => {
   }
 };
 
+const verifyToken = async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ error: "Token manquant ou format invalide" });
+  }
+
+  const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  try {
+    const userId = decoded.userId;
+    // Si on arrive ici, le token est valide (grâce au middleware authenticateToken)
+    console.log("Verifying token for user ID:", userId);
+    const [rows] = await pool.query("SELECT id, email, fullname, admin, valideaccount FROM Users WHERE id = ?", [userId]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json({
+      valid: true,
+      user: rows[0],
+    });
+  } catch (error) {
+    console.error("Error verifying token:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   getUsers,
   getUserById,
   createUser,
   loginUser,
   requestPasswordReset,
+  verifyToken,
   resetPassword,
 };

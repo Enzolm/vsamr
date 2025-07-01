@@ -12,7 +12,7 @@ function Home() {
         <div className="flex flex-col lg:flex-row lg:justify-between mb-6 gap-6 h-full">
           {/* Section actualités - prend tout l'espace disponible */}
           <div className="flex-1 lg:max-w-[calc(100%-470px)]">
-            <div className="rounded-lg shadow-md h-fit">
+            <div className="rounded-lg shadow-md h-fit max-w-7xl">
               <div className="aspect-video lg:aspect-[16/9] bg-gray-200 rounded-t-lg">
                 <img src="" alt="" className="w-full h-full object-cover rounded-t-lg" />
               </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 import logo from "@/assets/logoclear.png";
+import { config } from "@/config/config";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ function ForgotPassword() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3001/utilisateur/request-password-reset", {
+      const response = await fetch(`${config.api.baseUrl}/utilisateur/request-password-reset`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

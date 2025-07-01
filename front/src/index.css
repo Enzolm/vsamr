@@ -12,11 +12,11 @@
   font-family: Rubik, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: var(--color-cwhite);
+  background-color: white;
 
   color-scheme: light dark;
-  color: #112e4f;
-  background-color: #d6d4d4;
+  color: #041420;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -59,25 +59,110 @@
 @theme {
   --font-display: "Satoshi", "sans-serif";
   --breakpoint-3xl: 120rem;
-  --color-logo-blue: #112e4f;
-  --color-logo-sky: #96c4ea;
-  --color-logo-green: #397640;
-  --color-logo-lightgreen: #7fb36a;
-  --color-logo-beige: #f0e5c8;
-  --color-logo-sun: #f8c144;
+  --color-logo-blue: #081d35;
+  --color-logo-sky: #4a9de0;
+  --color-logo-green: #2a5b32;
+  --color-logo-lightgreen: #65a051;
+  --color-logo-beige: #f7f0d8;
+  --color-logo-sun: #e6a726;
 
-  --color-canva-white: #eceeed;
-  --color-canva-green: #214648;
-  --color-canva-lightgreen: #9fb448;
-  --color-canva-#7C7474: #112e4f;
+  --color-canva-white: #ffffff;
+  --color-canva-green: #0d2b2d;
+  --color-canva-lightgreen: #7a9034;
+  --color-canva-darkblue: #041420;
 
-  --color-cblue: #0b304d;
+  --color-cblue: #052028;
+  --color-cblue-light: #0a3848;
+  --color-cblue-dark: #01141c;
 
-  --color-cwhite: #f4f3eb;
-  --color-cwhite2: #f8f4ec;
-  --color-cdarkWhite: #efefef;
+  --color-cwhite: #ffffff;
+  --color-cwhite2: #fdfbf5;
+  --color-cdarkWhite: #d8d8d8;
 
-  --color-cgreen: #6c9a3d;
-  --color-cgreen2: #90b26f;
-  --color-cgreenLight: #b0c998;
+  --color-cgreen: #4a6e28;
+  --color-cgreen2: #658848;
+  --color-cgreen3: #567536;
+  --color-cgreenLight: #85a870;
+  --color-cgreenDark: #334f1c;
+}
+
+/* Utilitaires pour améliorer le contraste */
+.high-contrast-text {
+  color: var(--color-canva-darkblue) !important;
+}
+
+.high-contrast-bg {
+  background-color: var(--color-cwhite) !important;
+}
+
+.high-contrast-border {
+  border-color: var(--color-cblue-dark) !important;
+}
+
+/* Amélioration des boutons pour le contraste */
+.btn-high-contrast {
+  background-color: var(--color-cblue-dark);
+  color: var(--color-cwhite);
+  border: 2px solid var(--color-cblue-dark);
+}
+
+.btn-high-contrast:hover {
+  background-color: var(--color-cblue);
+  border-color: var(--color-cblue);
+}
+
+.btn-high-contrast:focus {
+  outline: 3px solid var(--color-logo-sky);
+  outline-offset: 2px;
+}
+
+/* Amélioration du contraste pour les liens de contenu uniquement */
+.content a,
+.prose a,
+article a {
+  color: var(--color-cblue-dark);
+  text-decoration: underline;
+}
+
+.content a:hover,
+.prose a:hover,
+article a:hover {
+  color: var(--color-cblue);
+  text-decoration: none;
+}
+
+/* Focus pour tous les liens pour l'accessibilité */
+a:focus {
+  outline: 2px solid var(--color-logo-sky);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Amélioration du contraste pour les inputs */
+input,
+textarea,
+select {
+  border: 2px solid var(--color-cdarkWhite);
+  background-color: var(--color-cwhite);
+  color: var(--color-canva-darkblue);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-cblue);
+  outline: 2px solid var(--color-logo-sky);
+  outline-offset: 1px;
+}
+
+/* Amélioration du contraste pour les cards */
+.card-high-contrast {
+  background-color: var(--color-cwhite);
+  border: 1px solid var(--color-cdarkWhite);
+  box-shadow: 0 2px 8px rgba(4, 20, 32, 0.1);
+}
+
+.card-high-contrast:hover {
+  box-shadow: 0 4px 16px rgba(4, 20, 32, 0.15);
+  border-color: var(--color-cblue-light);
 }

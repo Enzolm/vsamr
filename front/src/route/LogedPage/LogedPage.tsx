@@ -1,11 +1,22 @@
 import NavbarLoged from "./Component/NavbarLoged";
+import AssosAdmin from "./assosManagement/AssosAdmin";
+import { Routes, Route } from "react-router";
+import AssociationsList from "./assosManagement/AssosList";
+import AssosEdit from "./assosManagement/AssosEdit";
 
 export default function LogedPage() {
   return (
     <div className="items-center flex h-screen bg-cgreen1">
       <NavbarLoged />
-      {/* Contenu de la page loguée */}
-      <h1>Bienvenue sur votre page</h1>
+
+      <div className="flex-1">
+        <Routes>
+          {/* <Route path="/*" element={<AssosAdmin />} /> */}
+          <Route path="/associations/edit" element={<AssosEdit />} />
+          <Route path="/associations" element={<AssociationsList />} />
+          <Route path="/associations/create" element={<AssosAdmin />} /> {/* Route par défaut */}
+        </Routes>
+      </div>
     </div>
   );
 }

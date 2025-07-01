@@ -3,6 +3,7 @@ const cors = require("cors");
 const pool = require("./DataBase/db.js");
 const router = require("./routes/User/utilisateur.js");
 const { testEmailConnection } = require("./services/emailService.js");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -10,7 +11,7 @@ const app = express();
 // Configuration CORS pour permettre les requêtes depuis le frontend
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001", "http://127.0.0.1:5173"],
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -21,6 +22,11 @@ app.use(express.json()); // Middleware pour parser le JSON
 app.use(express.urlencoded({ extended: true })); // Middleware pour parser les données de formulaire
 
 app.use("/utilisateur", router);
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+const associationRoutes = require("./routes/Admin/association.js");
+app.use("/associations", associationRoutes);
 
 const PORT = process.env.API_PORT;
 app.listen(PORT, async () => {

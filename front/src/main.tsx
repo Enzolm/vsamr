@@ -9,6 +9,9 @@ import ForgotPassword from "@/route/ForgotPassword";
 import ResetPassword from "@/route/ResetPassword";
 import { Toaster } from "@/components/ui/sonner";
 import LogedPage from "@/route/LogedPage/LogedPage";
+import AuthGuard from "./hooks/AuthGuard";
+import AssociationsListAll from "@/route/Assocations/AssocciationsListAll";
+import AssociationsInfo from "@/route/Assocations/AssociationInfo";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -16,11 +19,20 @@ createRoot(document.getElementById("root")!).render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="" element={<NotFound />} />
-      <Route path="/*" element={<InfoMaire />} />
+      <Route path="/info" element={<InfoMaire />} />
       <Route path="/login" element={<Login />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/logged" element={<LogedPage />} />
+      <Route path="/associations" element={<AssociationsListAll />} />
+      <Route path="/associations/:id" element={<AssociationsInfo />} />
+      <Route
+        path="/logged/*"
+        element={
+          <AuthGuard>
+            <LogedPage />
+          </AuthGuard>
+        }
+      />
     </Routes>
   </BrowserRouter>
 );
