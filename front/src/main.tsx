@@ -12,6 +12,7 @@ import LogedPage from "@/route/LogedPage/LogedPage";
 import AuthGuard from "./hooks/AuthGuard";
 import AssociationsListAll from "@/route/Assocations/AssocciationsListAll";
 import AssociationsInfo from "@/route/Assocations/AssociationInfo";
+import ReservationSalle from "@/route/ReservationSalle/ReservationSalle";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -25,6 +26,8 @@ createRoot(document.getElementById("root")!).render(
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/associations" element={<AssociationsListAll />} />
       <Route path="/associations/:id" element={<AssociationsInfo />} />
+      <Route path="/reservation" element={<ReservationSalle />} />
+      <Route path="/salle-polyvalente" element={<ReservationSalle />} />
       <Route
         path="/logged/*"
         element={

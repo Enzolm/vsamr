@@ -143,6 +143,9 @@ const Calendar: React.FC<CalendarProps> = ({ events = [], onDateSelect, defaultM
   );
 };
 
+// Export du composant Calendar
+export { Calendar };
+
 // Exemple d'utilisation avec données de test
 export default function CalendarExample() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);

@@ -1,7 +1,7 @@
 export const config = {
   // API Configuration
   api: {
-    baseUrl: "http://192.168.37.89:3001",
+    baseUrl: "http://192.168.0.21:3001",
     timeout: 10000,
   },
 };
@@ -53,4 +53,40 @@ export const accessibility = {
     offset: "2px",
     color: "#4a9de0",
   },
+};
+
+// Configuration pour la réservation de salle
+export const reservationSalle = {
+  // Email administrateur pour recevoir les demandes
+  adminEmail: "admin@villeneuve-sur-auvers.fr",
+  // Heures d'ouverture de la salle
+  horairesSalle: {
+    debut: "08:00",
+    fin: "22:00",
+  },
+  // Durée minimum et maximum de réservation
+  dureeReservation: {
+    minimum: 2, // heures
+    maximum: 12, // heures
+  },
+  // Tarifs (optionnel pour affichage informatif)
+  tarifs: {
+    particulier: {
+      demieJournee: 50,
+      journeeComplete: 80,
+    },
+    association: {
+      demieJournee: 30,
+      journeeComplete: 50,
+    },
+  },
+  // Types de réservation
+  typesReservation: [
+    { id: "mariage", label: "Mariage", couleur: "#ff6b9d" },
+    { id: "anniversaire", label: "Anniversaire", couleur: "#4ecdc4" },
+    { id: "reunion", label: "Réunion", couleur: "#45b7d1" },
+    { id: "formation", label: "Formation", couleur: "#96ceb4" },
+    { id: "spectacle", label: "Spectacle", couleur: "#ffeaa7" },
+    { id: "autre", label: "Autre", couleur: "#dda0dd" },
+  ],
 };

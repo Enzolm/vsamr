@@ -28,6 +28,10 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 const associationRoutes = require("./routes/Admin/association.js");
 app.use("/associations", associationRoutes);
 
+// Routes pour les réservations de salle
+const reservationRoutes = require("./routes/Public/reservations.js");
+app.use("/reservations-salle", reservationRoutes);
+
 const PORT = process.env.API_PORT;
 app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
