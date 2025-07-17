@@ -1,5 +1,6 @@
 import NavbarLoged from "./Component/NavbarLoged";
 import AssosAdmin from "./assosManagement/AssosAdmin";
+import ReservationAdmin from "./reservationManagement/ReservationAdmin";
 import { Routes, Route } from "react-router";
 import AssociationsList from "./assosManagement/AssosList";
 import AssosEdit from "./assosManagement/AssosEdit";
@@ -14,7 +15,8 @@ export default function LogedPage() {
           {/* <Route path="/*" element={<AssosAdmin />} /> */}
           <Route path="/associations/edit" element={<AssosEdit />} />
           <Route path="/associations" element={<AssociationsList />} />
-          <Route path="/associations/create" element={<AssosAdmin />} /> {/* Route par défaut */}
+          <Route path="/associations/create" element={<AssosAdmin />} />
+          <Route path="/reservations" element={<ReservationAdmin />} />
         </Routes>
       </div>
     </div>

@@ -25,36 +25,63 @@ export default function NavbarLoged() {
           <img src={logoVSAMR} alt="Logo du village" className="w-[120px]" />
         </li>
         <li className="mt-6">
-          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/myaccount">
+          <Link
+            className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+            to="/myaccount"
+          >
             Mon Profil
           </Link>
         </li>
         <li className="mt-6">
-          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/logged/myassociations">
+          <Link
+            className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+            to="/logged/myassociations"
+          >
             Mon Associations
           </Link>
         </li>
         {isAdmin && (
           <>
             <li className="mt-6">
-              <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/adminusers">
+              <Link
+                className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                to="/adminusers"
+              >
                 Utilisateurs
               </Link>
             </li>
             <li className="mt-6">
-              <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/logged/associations">
+              <Link
+                className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                to="/logged/associations"
+              >
                 Associations
               </Link>
             </li>
             <li className="mt-6">
-              <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10" to="/adminpost">
+              <Link
+                className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                to="/logged/reservations"
+              >
+                Réservations
+              </Link>
+            </li>
+            <li className="mt-6">
+              <Link
+                className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+                to="/adminpost"
+              >
                 Publications
               </Link>
             </li>
           </>
         )}
         <li className="mt-6">
-          <Link className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-red-500/38" to="/" onClick={logout}>
+          <Link
+            className="font-medium text-lg text-white hover:text-gray-200 transition-colors px-4 py-2 rounded-lg hover:bg-red-500/38"
+            to="/"
+            onClick={logout}
+          >
             Déconnexion
           </Link>
         </li>

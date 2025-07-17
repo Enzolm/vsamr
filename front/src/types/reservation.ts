@@ -12,8 +12,9 @@ export interface ReservationSalle {
   nombrePersonnes: number;
   description: string;
   besoinsSpecifiques?: string;
-  statut: "en_attente" | "confirmee" | "refusee";
-  created_at?: string;
+  statut: "en_attente" | "validee" | "annulee" | "passee";
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface DisponibiliteSalle {

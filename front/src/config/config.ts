@@ -1,7 +1,7 @@
 export const config = {
   // API Configuration
   api: {
-    baseUrl: "http://192.168.0.21:3001",
+    baseUrl: "http://localhost:3001",
     timeout: 10000,
   },
 };
@@ -58,17 +58,22 @@ export const accessibility = {
 // Configuration pour la réservation de salle
 export const reservationSalle = {
   // Email administrateur pour recevoir les demandes
-  adminEmail: "admin@villeneuve-sur-auvers.fr",
+  adminEmail: "lemaireenzo91@gmail.com",
   // Heures d'ouverture de la salle
-  horairesSalle: {
-    debut: "08:00",
-    fin: "22:00",
-  },
+
   // Durée minimum et maximum de réservation
   dureeReservation: {
-    minimum: 2, // heures
-    maximum: 12, // heures
+    minimum: 0, // heures
+    maximum: 999, // heures
   },
+  adresse: "6 Rue de Noncerve, 91580 Villeneuve-sur-Auvers",
+
+  EquipementsMobilier: "25 tables, 94 chaises",
+  EquipementsCuisine:
+    "Cuisine équipée avec réfrigérateur, meuble chauffe-plat, four, four electrique double, évier",
+  Parking: "Parking cloturé plus de 50 places",
+  Capacite: "100 personnes",
+
   // Tarifs (optionnel pour affichage informatif)
   tarifs: {
     particulier: {
@@ -78,6 +83,26 @@ export const reservationSalle = {
     association: {
       demieJournee: 30,
       journeeComplete: 50,
+    },
+    WeekEndResident: {
+      Total: 290,
+      Arrhes: 87,
+      Solde: 203,
+    },
+    FinAnneeResident: {
+      Total: 350,
+      Arrhes: 105,
+      Solde: 245,
+    },
+    WeekEndNonResident: {
+      Total: 680,
+      Arrhes: 204,
+      Solde: 476,
+    },
+    FinAnneeNonResident: {
+      Total: 750,
+      Arrhes: 225,
+      Solde: 525,
     },
   },
   // Types de réservation
